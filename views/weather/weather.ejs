@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../includes/head.ejs') %>
+    <body>
+        <%- include("../includes/nav.ejs") %>
+        <div class="container">
+            <% if(errorMessage){ %>
+            <div class="error-div p-2 my-4">
+                <h4 class="text-danger text-center"><%= errorMessage %></h4>
+            </div>
+            <% } %>
+            <form action="/" method="POST" autocomplete="off" class="my-4">
+                <div class="form-group">
+                    <label for="location">Enter the city name</label>
+                    <input
+                        type="text"
+                        name="location"
+                        class="form-control"
+                        id="loc"
+                    />
+                </div>
+                <button class="btn btn-outline-secondary">Submit</button>
+            </form>
+            <% if(json){ %> <%- include('../includes/current_weather.ejs') %>
+            <%}else{ %>
+            <h2 class="text-secondary text-center">
+                No data found. Please try another location
+            </h2>
+            <% } %>
+        </div>
+    </body>
+</html>
